@@ -11,10 +11,18 @@ app.set('view engine', 'pug');
 //home route
 app.get('/', function(req, res) {
     res.render('index', {
+        title: "Welcome",
         heading: "Articles"
     });
 });
 
+//add route
+app.get('/articles/add', function(req, res) {
+    res.render('add_article', {
+        title: "Welcome",
+        heading: "Add Article"
+    });
+});
 
 //start sever
 app.listen(3000, function(){
