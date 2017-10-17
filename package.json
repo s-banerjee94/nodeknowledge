@@ -1,0 +1,19 @@
+{
+  "name": "nodeknowledge",
+  "version": "1.0.0",
+  "description": "A test node & Express app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s-banerjee94/nodeknowledge.git"
+  },
+  "author": "Sandeepna Banerjee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/s-banerjee94/nodeknowledge/issues"
+  },
+  "homepage": "https://github.com/s-banerjee94/nodeknowledge#readme"
+}
