@@ -10,11 +10,14 @@ app.set('view engine', 'pug');
 
 //home route
 app.get('/', function(req, res) {
-    res.render('index');
+    res.render('index', {
+        title: "Welcome",
+        heading: "Article"
+    });
 });
 
 
 //start sever
 app.listen(3000, function(){
-    console.log("Srever running port 3000");
+    console.log("Server running port 3000");
 });
