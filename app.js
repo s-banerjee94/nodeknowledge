@@ -36,9 +36,17 @@ app.use(bodyParser.json());
 
 //home route
 app.get('/', function(req, res) {
-    res.render('index', {
-        title: "Welcome",
-        heading: "Article"
+    Article.find({}, function(err, articles) {
+        if(err) {
+            console.log(err);
+        }
+        else {
+            res.render('index', {
+                title: "Welcome",
+                heading: "Articles",
+                articles: articles
+            });
+        }
     });
 });
 
@@ -48,12 +56,6 @@ app.get('/article/add', function(req, res) {
         title: "Add Article",
         heading: "Add Article"
     });
-});
-
-// add submit post route
-app.post('/article/add', function(req, res) {
-    
-    console.log(req.body.title);
 });
 
 
