@@ -32,6 +32,14 @@ app.get('/', function(req, res) {
     });
 });
 
+// article/add route
+app.get('/article/add', function(req, res) {
+    res.render('add_article', {
+        title: "Add Article",
+        heading: "Add Article"
+    });
+});
+
 
 //start sever
 app.listen(3000, function(){
