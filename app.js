@@ -20,15 +20,26 @@ db.on('error', function(err) {
 //init app
 const app = express();
 
+// bring models
+let Article = require('./models/article');
+
 //load view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 //home route
 app.get('/', function(req, res) {
-    res.render('index', {
-        title: "Welcome",
-        heading: "Article"
+    Article.find({}, function(err, articles) {
+        if(err) {
+            console.log(err);
+        }
+        else {
+            res.render('index', {
+                title: "Welcome",
+                heading: "Articles",
+                articles: articles
+            });
+        }
     });
 });
 
