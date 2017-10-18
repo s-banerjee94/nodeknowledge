@@ -58,6 +58,23 @@ app.get('/article/add', function(req, res) {
     });
 });
 
+// add submit post route
+app.post('/article/add', function(req, res) {
+    let article = new Article();
+    article.title = req.body.title;
+    article.author = req.body.author;
+    article.body = req.body.body;
+
+    article.save(function(err) {
+        if(err) {
+            console.log(err);
+        }
+        else {
+            res.redirect('/');
+        }
+    });
+});
+
 
 //start sever
 app.listen(3000, function(){
