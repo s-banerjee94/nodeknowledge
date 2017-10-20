@@ -102,6 +102,25 @@ app.get('/article/edit/:id', function(req, res) {
     });
 });
 
+// add edit post route
+app.post('/articles/edit/:id', function(req, res) {
+    let article = {};
+    article.title = req.body.title;
+    article.author = req.body.author;
+    article.body = req.body.body;
+
+    let query = {_id:req.params.id};
+
+    Article.update(query, article, function(err) {
+        if(err) {
+            console.log(err);
+            return;
+        }
+        else {
+            res.redirect('/');
+        }
+    });
+});
 
 
 //start sever
