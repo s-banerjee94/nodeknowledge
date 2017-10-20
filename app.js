@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const bodyParser = require('body-parser');
 
-
+//creat a connectin to mongodb
 mongoose.connect('mongodb://localhost/nodekb');
 let db = mongoose.connection;
 
@@ -33,6 +33,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
+
+//set public folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 //home route
 app.get('/', function(req, res) {
