@@ -37,6 +37,10 @@ app.use(bodyParser.json());
 //set public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
+
+
 //home route
 app.get('/', function(req, res) {
     Article.find({}, function(err, articles) {
@@ -88,6 +92,15 @@ app.post('/articles/add', function(req, res) {
     });
 });
 
+//load edit form
+app.get('/article/edit/:id', function(req, res) {
+    Article.findById(req.params.id, function(err, article) {
+        res.render('edit_article', {
+            article: article,
+            heading: "edit article" + article.title
+        });
+    });
+});
 
 
 
