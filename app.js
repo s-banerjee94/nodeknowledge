@@ -53,8 +53,10 @@ app.get('/', function(req, res) {
     });
 });
 
+
+
 // article/add route
-app.get('/article/add', function(req, res) {
+app.get('/articles/add', function(req, res) {
     res.render('add_article', {
         title: "Add Article",
         heading: "Add Article"
@@ -62,7 +64,7 @@ app.get('/article/add', function(req, res) {
 });
 
 // add submit post route
-app.post('/article/add', function(req, res) {
+app.post('/articles/add', function(req, res) {
     let article = new Article();
     article.title = req.body.title;
     article.author = req.body.author;
