@@ -53,7 +53,14 @@ app.get('/', function(req, res) {
     });
 });
 
-
+//get single article
+app.get('/article/:id', function(req, res) {
+    Article.findById(req.params.id, function(err, article) {
+        res.render('article', {
+            article: article
+        });
+    });
+});
 
 // article/add route
 app.get('/articles/add', function(req, res) {
