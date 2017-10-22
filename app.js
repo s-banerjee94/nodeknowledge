@@ -2,6 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const flash = require('connect-flash');
+const session = require('express-session');
+
 
 //creat a connectin to mongodb
 mongoose.connect('mongodb://localhost/nodekb');
@@ -38,7 +42,20 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+//express session middleware
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+  }));
 
+  //express messages middleware
+  app.use(require('connect-flash')());
+  app.use(function (req, res, next) {
+    res.locals.messages = require('express-messages')(req, res);
+    next();
+  });
 
 
 //home route
