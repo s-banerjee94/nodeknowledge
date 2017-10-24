@@ -1,19 +1,14 @@
 const express = require('express');
 
-let router = express.router();
+let router = express.Router();
 
-//get single article
-app.get('/article/:id', function(req, res) {
-    Article.findById(req.params.id, function(err, article) {
-        res.render('article', {
-            article: article,
-            title: article.author+"'s article" 
-        });
-    });
-});
+// bring in article models
+let Article = require('../models/article');
+
+
 
 // article/add route
-router.get('/articles/add', function(req, res) {
+router.get('/add', function(req, res) {
     res.render('add_article', {
         title: "Add Article",
         heading: "Add Article"
@@ -21,7 +16,7 @@ router.get('/articles/add', function(req, res) {
 });
 
 // add submit post route
-router.post('/articles/add', function(req, res) {
+router.post('/add', function(req, res) {
     req.checkBody('title', 'Titel is required').notEmpty();
     req.checkBody('author', 'Author is required').notEmpty();
     req.checkBody('body', 'Body is required').notEmpty();
@@ -52,7 +47,7 @@ router.post('/articles/add', function(req, res) {
 });
 
 //load edit form
-router.get('/article/edit/:id', function(req, res) {
+router.get('/edit/:id', function(req, res) {
     Article.findById(req.params.id, function(err, article) {
         res.render('edit_article', {
             article: article,
@@ -62,7 +57,7 @@ router.get('/article/edit/:id', function(req, res) {
 });
 
 // add edit post route
-router.post('/articles/edit/:id', function(req, res) {
+router.post('/edit/:id', function(req, res) {
     let article = {};
     article.title = req.body.title;
     article.author = req.body.author;
@@ -83,7 +78,7 @@ router.post('/articles/edit/:id', function(req, res) {
 });
 
 // article delete route 
-router.delete('/article/:id', function(req,res) {
+router.delete('/:id', function(req,res) {
     let query = {_id:req.params.id};
 
 
@@ -94,3 +89,17 @@ router.delete('/article/:id', function(req,res) {
         res.send('Success');
     });
 });
+
+
+//this route have to place at the end "at this moment I don't know reason"
+//get single article
+router.get('/:id', function(req, res) {
+    Article.findById(req.params.id, function(err, article) {
+        res.render('article', {
+            article: article,
+            title: article.author+"'s article" 
+        });
+    });
+});
+
+module.exports = router;
