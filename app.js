@@ -153,6 +153,7 @@ app.post('/articles/edit/:id', function(req, res) {
             return;
         }
         else {
+            req.flash('success', 'Aricle edited!');
             res.redirect('/');
         }
     });
