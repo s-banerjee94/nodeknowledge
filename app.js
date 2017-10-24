@@ -123,6 +123,7 @@ app.post('/articles/add', function(req, res) {
             console.log(err);
         }
         else {
+            req.flash('success', 'Article Added');
             res.redirect('/');
         }
     });
