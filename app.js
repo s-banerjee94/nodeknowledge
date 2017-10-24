@@ -92,6 +92,8 @@ app.get('/', function(req, res) {
     });
 });
 
+let articles = require('./routes/articles');
+app.use('/articles', articles);
 
 //start sever
 app.listen(3000, function(){
