@@ -9,3 +9,5 @@ let User = require('../models/user');
 router.get('/register', function(req,res) {
     res.render('register');
 });
+
+module.exports = router;
