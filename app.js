@@ -93,7 +93,7 @@ app.get('/', function(req, res) {
 });
 
 let articles = require('./routes/articles');
-let articles = require('./routes/users');
+let users = require('./routes/users');
 app.use('/articles', articles);
 app.use('/users', users);
 
