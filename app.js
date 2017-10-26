@@ -93,7 +93,9 @@ app.get('/', function(req, res) {
 });
 
 let articles = require('./routes/articles');
+let articles = require('./routes/users');
 app.use('/articles', articles);
+app.use('/users', users);
 
 //start sever
 app.listen(3000, function(){
