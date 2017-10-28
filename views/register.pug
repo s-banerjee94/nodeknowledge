@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    h1 Resgister
+    form(method="post", action='/users/register')
+        .form-group
+            label(for="Name") Name 
+            input.form-control(type="text", name="name")
+        .form-group
+            label(for="email") Email  
+            input.form-control(type="text", name="email")
+        .form-group
+            label(for="username") Username  
+            input.form-control(type="text", name="username")
+        .form-group
+            label(for="password") Password
+            input.form-control(type="text", name="password")
+        .form-group
+            label(for="confirm password") Confirm Password
+            input.form-control(type="text", name="password2")
+        input.btn.btn-primary(type="submit", value="Submit")
